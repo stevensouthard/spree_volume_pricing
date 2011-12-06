@@ -1,4 +1,4 @@
-Admin::VariantsController.class_eval do
+Spree::Admin::VariantsController.class_eval do
   update.before :before_update
 
   respond_override :update => {:html => {
