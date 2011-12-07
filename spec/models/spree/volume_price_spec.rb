@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe Spree::VolumePrice do
+  it { should belong_to(:variant) }
+  it { should validate_presence_of(:variant) }
+  it { should validate_presence_of(:amount) }
+
   before(:each) do
     @volume_price = Spree::VolumePrice.new(:variant => Spree::Variant.new, :amount => 10)
   end
@@ -15,7 +19,7 @@ describe Spree::VolumePrice do
     @volume_price.should be_open_ended
   end
   
-  describe "valid?" do
+  describe "valid range format" do
     it "should require the presence of a variant" do
       @volume_price.variant = nil
       @volume_price.should_not be_valid
